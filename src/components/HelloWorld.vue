@@ -2,7 +2,7 @@
   <div class="data">
 
     <ul>
-      <li  v-for="item in db" v-bind:key="item.Name">{{ item.Name }}</li>
+      <li  v-for="item in Nikki" v-bind:key="item.Name">{{ item.Name }}</li>
     </ul>
 
   </div>
@@ -14,7 +14,7 @@ export default {
   name: 'data',
   data: function () {
     return {
-      db: Nikki
+      Nikki: Nikki
     }
   }
 }
