@@ -16,8 +16,9 @@
         <td>{{ props.item.Pure }}</td>
         <td>{{ props.item.Cool }}</td>
         <td>{{ props.item.Warm }}</td>
-        <td>{{ props.item.Color }}</td>
-        <td>{{ props.item.Tag }}</td>
+        <td><th v-for="i in props.item.Color">{{ i }}</th></td>
+        <td><th v-for="i in props.item.Tag">{{ i }}</th></td>
+
       </template>
     </v-data-table>
   </div>
@@ -44,6 +45,8 @@ export default {
         { text: 'ピュア', align: 'center', value: 'Pure' },
         { text: 'クール', align: 'center', value: 'Cool' },
         { text: 'ウォーム', align: 'center', value: 'Warm' },
+        { text: '色', align: 'center', value: 'Color' },
+        { text: 'タグ', align: 'center', value: 'Tag' }
       ]
     }
   }
@@ -68,5 +71,8 @@ li {
 
 a {
   color: #42b983;
+}
+th {
+  font-weight: normal;
 }
 </style>
