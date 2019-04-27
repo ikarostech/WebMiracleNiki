@@ -1,10 +1,10 @@
 <template>
   <div class="data">
 
-    <ul>
-      <li  v-for="item in db" v-bind:key="item.Name">{{ item.Name }}</li>
-    </ul>
-
+    <v-data-table :items="db"></v-data-table>
+      <template slot="item" slot-scope="props">
+        
+      </template>
   </div>
 </template>
 
