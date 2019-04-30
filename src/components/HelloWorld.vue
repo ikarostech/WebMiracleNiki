@@ -1,7 +1,8 @@
 <template>
   <div class="data">
-
-    <v-data-table :headers="headers" :items="db">
+    <v-text-field v-model="search" append-icon="search" label="Search" single-line
+    hide-details></v-text-field>
+    <v-data-table :headers="headers" :items="db" :search="search">
       <template slot="items" slot-scope="props">
         <td>{{ props.item.Number }}</td>
         <td>{{ props.item.Name }}</td>
@@ -47,7 +48,8 @@ export default {
         { text: 'ウォーム', align: 'center', value: 'Warm' },
         { text: '色', align: 'center', value: 'Color' },
         { text: 'タグ', align: 'center', value: 'Tag' }
-      ]
+      ],
+      search: ''
     }
   }
 }
