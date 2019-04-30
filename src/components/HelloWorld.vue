@@ -16,8 +16,8 @@
         <td>{{ props.item.Pure }}</td>
         <td>{{ props.item.Cool }}</td>
         <td>{{ props.item.Warm }}</td>
-        <td><th v-for="i in props.item.Color">{{ i }}</th></td>
-        <td><th v-for="i in props.item.Tag">{{ i }}</th></td>
+        <td><th v-for="i in props.item.Color" v-bind:key="i">{{ i }}</th></td>
+        <td><th v-for="i in props.item.Tag" v-bind:key="i">{{ i }}</th></td>
 
       </template>
     </v-data-table>
