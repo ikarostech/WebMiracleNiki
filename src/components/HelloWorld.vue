@@ -72,14 +72,14 @@ export default {
   methods: {
     customSort (items, index, isDescending) {
       items.sort((a, b) => {
-        if (index !== 'Number' || index !== 'Color' || index !== 'Tag') {
+        if (index !== 'Number' && index !== 'Hearts' && index !== 'Color' && index !== 'Tag') {
           return Compare(a, index) - Compare(b, index)
-        } else if (index === 'Number') {
-          return a.Number - b.Number
+        } else {
+          return Reflect.get(a, index) - Reflect.get(b, index)
         }
       })
       if (isDescending) {
-        items.slice().reverse()
+        items = items.slice().reverse()
       }
       return items
     }
