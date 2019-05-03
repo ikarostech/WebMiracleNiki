@@ -2,7 +2,7 @@
   <div class="data">
     <v-text-field v-model="search" append-icon="search" label="Search" single-line
     hide-details></v-text-field>
-    <v-data-table :headers="headers" :items="db" :search="search">
+    <v-data-table :headers="headers" :items="db" :search="search" :custom-sort="customSort">
       <template slot="items" slot-scope="props">
         <td>{{ props.item.Number }}</td>
         <td>{{ props.item.Name }}</td>
@@ -27,6 +27,23 @@
 
 <script>
 import Nikki from '../assets/MiracleNikkiJp_items.json'
+
+function Compare (item, index) {
+  let ItemData = Reflect.get(item, index)
+  switch (ItemData) {
+    case 'SS':
+      return 0
+    case 'S':
+      return 1
+    case 'A':
+      return 2
+    case 'B':
+      return 3
+    case 'C':
+      return 4
+  }
+  return 5
+}
 export default {
   name: 'data',
   data: function () {
@@ -50,6 +67,21 @@ export default {
         { text: 'タグ', align: 'center', value: 'Tag' }
       ],
       search: ''
+    }
+  },
+  methods: {
+    customSort (items, index, isDescending) {
+      items.sort((a, b) => {
+        if (index !== 'Number' && index !== 'Hearts' && index !== 'Color' && index !== 'Tag') {
+          return Compare(a, index) - Compare(b, index)
+        } else {
+          return Reflect.get(a, index) - Reflect.get(b, index)
+        }
+      })
+      if (isDescending) {
+        items = items.slice().reverse()
+      }
+      return items
     }
   }
 }
